@@ -36,6 +36,18 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+
+        $campos=[
+            'Contenido'=>'required|string|max:250'
+        ];
+
+        $mensaje=[
+            'required'=>'El :attribute es requerido'
+        ];
+
+        $this->validate($request, $campos, $mensaje);
+
+
         $datosPost = request()->except('_token');
         Post::insert($datosPost);
         //return response()->json($datosPost);
@@ -75,10 +87,21 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $campos=[
+            'Contenido'=>'required|string|max:250'
+        ];
+
+        $mensaje=[
+            'required'=>'El :attribute es requerido'
+        ];
+
+        $this->validate($request, $campos, $mensaje);
+
         $datosPost = request()->except('_token', '_method');
         Post::where('id','=',$id)->update($datosPost);
         $post=Post::findOrFail($id);
-        return view('post.edit', compact('post'));
+        //return view('post.edit', compact('post'));
+        return redirect('post')->with('mensaje','Post modificado');
 
     }
 

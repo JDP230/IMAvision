@@ -15,7 +15,7 @@ use App\Http\Controllers\PostController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 /*
 Route::get('/post', function () {
@@ -24,4 +24,13 @@ Route::get('/post', function () {
 Route::get('/post/create',[PostController::class,'create']);
 */
 
-Route::resource('post', PostController::class);
+Route::resource('post', PostController::class)->middleware('auth');
+Auth::routes();
+
+Route::get('/home', [PostController::class, 'index'])->name('home');
+
+
+//Cuando se logea redirigir a index
+Route::group(['middleware' => 'auth'], function(){
+    Route::get('/', [PostController::class, 'index'])->name('home');
+});

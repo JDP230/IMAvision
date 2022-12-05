@@ -1,6 +1,13 @@
+@extends('layouts.app')
+@section('content')
+
 <div class="container">
+
 @if(Session::has('mensaje'))
-{{ Session::get('mensaje') }}
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    <strong>{{ Session::get('mensaje') }}</strong>
+</div>
 @endif
 <a href="{{ url('/post/create') }}">Crear post</a>
 
@@ -48,3 +55,4 @@
    <br><br>
    @endforeach
 </div>
+@endsection
