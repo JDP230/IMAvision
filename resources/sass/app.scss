@@ -1,8 +1,25 @@
 // Fonts
 @import url('https://fonts.bunny.net/css?family=Nunito');
 
-// Variables
-@import 'variables';
+// base
+@import 'base/typo';
+@import 'base/theme';
+
+// components
+@import 'components/buttons';
+@import 'components/inputs';
+
+
+// layout
+@import 'layout/navigation';
+@import 'layout/forms';
+
+
+// utilities
+@import 'utilities/variables';
+
+// views
+@import 'views/post';
 
 // Bootstrap
 @import 'bootstrap/scss/bootstrap';

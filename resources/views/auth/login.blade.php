@@ -1,20 +1,24 @@
-@extends('layouts.app')
+@extends('layouts.fondo_color50')
 
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
-
+            <div class="card card-theme">
                 <div class="card-body">
+                    <div class="header-card">
+                        <h1>Bienvenido a IMAvision!</h1>
+                        <p class="txt-info mt-3">IMAvision es una herramienta ideal para todo interesado en la ingeniería, 
+                            una perfecta guía de aprendizaje a una nueva experiencia académica y laboral. 
+                            Únete completamente gratis o inicia sesión y empieza a forjarte como ingeniero a tu medida!</p>
+                    </div>
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
 
-                        <div class="row mb-3">
-                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
+                        <div class="row">
+                            <label for="email" class="col-md-4 col-form-label text-md-end pb-0">{{ __('Correo electrónico') }}</label>
 
-                            <div class="col-md-6">
+                            <div class="form-group col-md-6">
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
 
                                 @error('email')
@@ -25,10 +29,10 @@
                             </div>
                         </div>
 
-                        <div class="row mb-3">
-                            <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
+                        <div class="row pb-2">
+                            <label for="password" class="col-md-4 col-form-label text-md-end pb-0">{{ __('Contraseña') }}</label>
 
-                            <div class="col-md-6">
+                            <div class="form-group col-md-6">
                                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
 
                                 @error('password')
@@ -39,34 +43,28 @@
                             </div>
                         </div>
 
-                        <div class="row mb-3">
-                            <div class="col-md-6 offset-md-4">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-
-                                    <label class="form-check-label" for="remember">
-                                        {{ __('Remember Me') }}
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row mb-0">
+                        <div class="row mb-">
+                            @if (Route::has('password.request'))
+                                <span>Olvidaste tu contraseña? Clic aqui en </span>
+                                <a class="btn btn-link" href="{{ route('password.request') }}">
+                                    {{ __('Recuperar Cuenta') }}
+                                </a>
+                            @endif
                             <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Login') }}
+                                <button type="submit" class="btn btn_base">
+                                    {{ __('INICIAR SESIÓN') }}
                                 </button>
-
-                                @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('Forgot Your Password?') }}
-                                    </a>
+                                @if (Route::has('register'))
+                                <a class="btn btn_base mt-2" href="{{ route('register') }}">{{ __('REGISTRARSE') }}</a>
                                 @endif
+
+                                <a class="btn btn_base mt-2" href="{{ url('/acercade') }}">{{ __('ACERCA DE') }}</a>
                             </div>
                         </div>
                     </form>
                 </div>
             </div>
+            <span class="derechos">Copyright IMAvision UANL 2022, Todos los derechos reservados.</span>
         </div>
     </div>
 </div>

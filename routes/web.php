@@ -17,10 +17,11 @@ use App\Http\Controllers\PostController;
 Route::get('/', function () {
     return view('auth.login');
 });
-/*
-Route::get('/post', function () {
-    return view('post.index');
+
+Route::get('/acercade', function () {
+    return view('acercade');
 });
+/*
 Route::get('/post/create',[PostController::class,'create']);
 */
 
