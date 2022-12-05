@@ -20,8 +20,16 @@
 }
 
 .txt_foro{
-    color: #2299ad;
+    color: #2299ad !important;
     word-break: break-word;
+}
+
+.txt_orange{
+    color: #a28c60 !important; 
+}
+
+.txtN{
+    font-weight: 900 !important;
 }
 
 .txt10{
@@ -39,4 +47,12 @@
 .txt18{
     font-size: 18px;
     font-weight: bold;
+}
+
+.inter-line10{
+    line-height: 10px !important;
+}
+
+.inter-line13{
+    line-height: 13px !important;
 }
