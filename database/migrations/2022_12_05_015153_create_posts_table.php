@@ -19,8 +19,16 @@ return new class extends Migration
             $table->string('Contenido');
             $table->integer('Acuerdo');
             $table->integer('Desacuerdo');
+            $table->timestamp('created_at')->default(\DB::raw('CURRENT_TIMESTAMP'));
+            $table->timestamp('updated_at')->default(\DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
 
-            $table->timestamps();
+            //$table->foreign('user_id')->references('id')->on('users');
+            $table->foreignId('user_id')
+                    ->nullable()
+                    ->constrained('users')
+                    ->cascadeOnUpdate()
+                    ->nullOnDelete();
+
         });
     }
 

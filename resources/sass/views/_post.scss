@@ -1,0 +1,23 @@
+.cont-foro{
+    width: auto !important;
+    height: auto !important;
+    background-color: white;
+    margin: 10px 0px -10px 0px !important;
+    padding: 10px 0px;
+    box-shadow: 0px 9px 33px -15px black;
+}
+
+.cont-comentarios{
+    height: 60px;
+    width: -webkit-fill-available !important;
+    background-color: wheat;
+    margin: 15px 15px 10px 15px !important;
+}
+
+#buscador_foro{
+    margin-top: 80px;
+}
+
+.btn_cont_post{
+    display: flex;
+}

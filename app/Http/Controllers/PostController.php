@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\User;
+
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -14,7 +16,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $datos['posts']=Post::paginate(5);
+        $datos['posts']=Post::paginate();
         return view('post.index', $datos);
     }
 
@@ -88,7 +90,7 @@ class PostController extends Controller
     public function update(Request $request, $id)
     {
         $campos=[
-            'Contenido'=>'required|string|max:250'
+            'Contenido'=>'required|string|max:600'
         ];
 
         $mensaje=[
